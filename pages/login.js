@@ -8,6 +8,7 @@ import { clearMessage } from "../redux/actions/message";
 import Layout from '../components/layout'
 
 import style from '../styles/loginAndRegister.module.css';
+import { setCookies } from 'cookies-next';
 
 export async function getServerSideProps(ctx) {
   const { req, res } = ctx
@@ -62,7 +63,8 @@ const Login = () => {
     dispatch(clearMessage());
     setLoading(true);
       dispatch(login(username, password))
-        .then(() => {
+        .then((token) => {
+          setCookies('accessToken', token, {sameSite: "none", secure:true});
           router.push("/login");
           setLoading(false);
         })

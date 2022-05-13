@@ -7,6 +7,7 @@ import { loginAdmin } from "../../redux/actions/auth";
 import { clearMessage } from "../../redux/actions/message";
 
 import style from '../../styles/loginAndRegister.module.css';
+import { setCookies } from 'cookies-next';
 
 export async function getServerSideProps(ctx) {
   const { req, res } = ctx
@@ -61,7 +62,8 @@ const LoginAdmin = () => {
     dispatch(clearMessage());
     setLoading(true);
       dispatch(loginAdmin(username, password))
-        .then(() => {
+        .then((token) => {
+          setCookies('accessToken', token, {sameSite: "none", secure:true});
           router.push("/dashboard/loginAdmin");
           setLoading(false);
         })

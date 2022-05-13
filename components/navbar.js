@@ -12,6 +12,7 @@ import { useCart } from "react-use-cart";
 
 import dynamic from 'next/dynamic';
 import $ from "jquery";
+import { removeCookies } from 'cookies-next';
 
 const Cart = dynamic(
   () => import('./cart.js'),
@@ -33,6 +34,7 @@ const Navbar = ({items}) => {
 
   const handleLogout = (e) =>  {
     dispatch(logout());
+    removeCookies("accessToken", { path: '/', domain: 'sikatboss.herokuapp.com' });
     router.push("/");
     Swal.fire({
       position: 'center',

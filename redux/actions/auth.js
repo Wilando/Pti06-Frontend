@@ -57,7 +57,7 @@ export const login = (emailCustomer, password) => (dispatch) => {
         });
       };
       
-      return Promise.resolve();
+      return Promise.resolve(data.token);
     },
     (error) => {
       const message =
@@ -119,7 +119,7 @@ export const loginAdmin = (namaAdmin, password) => (dispatch) => {
         });
       };
       
-      return Promise.resolve();
+      return Promise.resolve(data.token);
     },
     (error) => {
       const message =

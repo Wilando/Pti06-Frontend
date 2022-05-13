@@ -7,6 +7,7 @@ import { faBars, faTachometerAlt, faAngleDown, faUser, faFw, faBasketShopping, f
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutAdmin } from "../../redux/actions/auth";
 import Swal from 'sweetalert2';
+import { removeCookies } from 'cookies-next';
 
 
 export default function Layout({ children }) {
@@ -16,6 +17,7 @@ export default function Layout({ children }) {
 
   const handleLogout = (e) =>  {
     dispatch(logoutAdmin());
+    removeCookies("accessToken", { path: '/', domain: 'sikatboss.herokuapp.com' });
     router.push("/dashboard/loginAdmin");
     Swal.fire({
       position: 'center',
