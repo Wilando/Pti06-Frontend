@@ -27,6 +27,7 @@ const logout = () => {
   return axios.get(API_URL + "customer/logout", 
     { withCredentials: true })
     .then(function (response) {
+      console.log(response.config.headers.Cookie)
       return response.data;
     })
     .catch(function (error) {
