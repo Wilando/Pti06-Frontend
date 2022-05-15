@@ -58,7 +58,7 @@ function Items({ currentItems  }) {
                   <div className="card-body">
                     <h6>{formatTanggal(artikel.createdAt)}</h6>
                     <h3 className="card-title text-center">{artikel.judul_artikel}</h3>
-                    <img src={artikel.url_gambar} class="rounded mx-auto d-block my-5" alt="Gambar"/>
+                    <img src={artikel.url_gambar} className="img-fluid rounded mx-auto d-block my-5" alt="Gambar"/>
                     {parse(artikel.isi_artikel)}
 
                   </div>
